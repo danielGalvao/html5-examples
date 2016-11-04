@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Page Visibility</title>
+  </head>
+  <body>
+    <script>
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          console.log('inativo');
+          document.getElementsByTagName('title')[0].innerHTML = 'Saiu da página';
+        } else {
+          console.log('ativo');
+          document.getElementsByTagName('title')[0].innerHTML = 'Olhando da página';
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Online State</title>
+  </head>
+  <body>
+    <title>navigator.onLine testing</title>
+    <article>
+      <p>Current network status: <span id="status">checking...</span></p>
+    </article>
+    <script>
+    var statusElem = document.getElementById('status');
+    var statusElemP = document.getElementsByTagName('p');
+    setInterval(function () {
+      statusElemP[0].className = navigator.onLine ? 'online' : 'offline';
+      statusElem.innerHTML = navigator.onLine ? 'online' : 'offline';
+    }, 250);
+    </script>
+    <style>
+    html,body,article,p{
+      margin: 0;
+      padding: 0;
+    }
+    p {
+      font-size: 20px;
+      margin: 0;
+    }
+    p.online {
+      background-color: #00cc00;
+      color: black;
+    }
+    p.offline {
+      background-color: red;
+      color: white;
+    }
+    </style>
+  </body>
+</html>

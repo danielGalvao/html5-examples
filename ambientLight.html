@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ambient Light API</title>
+    <style>
+         .dark{
+            background-color: #444444;
+            color: #FFFFFF;
+         }
+
+         .classic {
+            background-color: #e3d5c3;
+            color: #6b4747;
+         }
+
+         .light {
+            background-color: #DDDDDD;
+            color: #333333;
+         }
+      </style>
+  </head>
+  <body>
+    <h1>Ambient Light API</h1>
+    <p>A ocorrência de luz é de: <span id=lux></span> </p>
+    <script>
+       function updateLightLevel(lightLevel) {
+          document.getElementById('lux').innerHTML = Math.round(lightLevel);
+
+          if (lightLevel < 50) {
+             document.body.className = 'dark';
+          } else if (lightLevel < 10000) {
+             document.body.className = 'classic';
+          } else {
+             document.body.className = 'light';
+          }
+       }
+
+       var isOldApiSupported = 'ondevicelight' in window;
+
+      if (isOldApiSupported) {
+        window.addEventListener('devicelight', function(event) {
+           updateLightLevel(event.value);
+        });
+      } else {
+        document.querySelector('.js-api-support').removeAttribute('hidden');
+        var sensor = new AmbientLightSensor();
+
+        sensor.start();
+        sensor.addEventListener('change', function(event) {
+          updateLightLevel(event.reading.illuminance);
+        });
+      }
+    </script>
+  </body>
+</html>
