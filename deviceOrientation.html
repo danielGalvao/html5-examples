@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Device Orientation</title>
+    <style>
+      img {
+        display: block;
+        margin:0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Device Orientation</h1>
+    <img src="http://s2.glbimg.com/VgvEn2RN41hhhoYD2RKbxlpKMfA=/300x225/s.glbimg.com/jo/g1/f/original/2015/08/20/brazil-politics-_ueslei_marcelino_reuters.jpg" />
+    <script>
+      var imagem = document.querySelector('img')
+      window.addEventListener('deviceorientation', function(event) {
+        var lr = event.gamma;
+        var fb = event.beta;
+        imagem.style.transform = 'rotate('+lr+'deg) rotate3d(1,0,0,'+(fb*-1)+'deg)';
+      });
+    </script>
+  </body>
+</html>
