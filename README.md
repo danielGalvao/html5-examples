@@ -10,7 +10,7 @@
       
       if(lightLevel < 50) {
         document.body.className = 'dark';
-       } else if (lightLevel < 10000) {
+       } else if(lightLevel < 10000) {
         document.body.className = 'classic';
        } else {
         document.body.className = 'light';
