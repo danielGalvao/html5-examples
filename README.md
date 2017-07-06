@@ -27,6 +27,7 @@
         document.querySelector('.js-api-support').removeAttribute('hidden');
         var sensor = new AmbientLightSensor();
         
+	// starting
         sensor.start();
         
         sensor.addEventListener('change', function(event) {
